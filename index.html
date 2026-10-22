@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es-MX" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <!-- Tema + flag JS antes del primer pintado (evita parpadeo). Tema por defecto: oscuro. -->
+    <script>
+        try {
+            var t = localStorage.getItem('mtm-theme');
+            document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+        } catch (e) {}
+        document.documentElement.classList.add('js');
+    </script>
+
+    <!-- SEO -->
+    <title>Mascotas a tu Meza | Alimento natural BARF para perros y gatos</title>
+    <meta name="description" content="Alimento natural BARF para perros y gatos de todas las razas y edades. Proteína animal, vegetales y cereales en cinco sabores. Pide por WhatsApp.">
+    <meta name="keywords" content="alimento BARF, comida natural para perros, comida natural para gatos, dieta BARF, alimento natural para mascotas, Mascotas a tu Meza, Mascotas a la Mesa">
+    <meta name="author" content="Mascotas a tu Meza">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0d0720">
+    <!-- TODO producción: añade <link rel="canonical" href="https://TU-DOMINIO/"> y usa URLs absolutas en og:image -->
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Mascotas a tu Meza">
+    <meta property="og:title" content="Mascotas a tu Meza | Alimento natural BARF para perros y gatos">
+    <meta property="og:description" content="El sabor que ellos aman. La nutrición que merecen. Alimentación BARF con proteína animal, vegetales y cereales.">
+    <meta property="og:image" content="img/promo-1.webp">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="img/paw.png" type="image/png">
+    <link rel="apple-touch-icon" href="img/paw.png">
+
+    <!-- Fuentes: Bricolage Grotesque (display) + Geist (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400..700&display=swap" rel="stylesheet">
+
+    <!-- Íconos Phosphor -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+
+    <link rel="preload" as="image" href="img/logo.webp" type="image/webp">
+    <link rel="stylesheet" href="styles.css">
+
+    <noscript><style>#loader{display:none!important}html.js .reveal,html.js [data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+
+    <!-- Datos estructurados -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "Mascotas a tu Meza",
+                "alternateName": "Mascotas a la Mesa",
+                "description": "Alimento natural BARF para perros y gatos de todas las razas y edades, con proteína animal, vegetales y cereales.",
+                "logo": "img/logo.webp",
+                "sameAs": ["https://www.facebook.com/share/1BAsz2CwoL/"]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "¿Qué es la alimentación BARF?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "BARF significa alimentos crudos biológicamente apropiados. Es una forma de alimentar a perros y gatos con ingredientes naturales: proteína animal, vegetales y cereales." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "¿Es para perros y para gatos?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Tenemos recetas para perros de todas las razas y edades, y una receta especial para gatos." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "¿Qué sabores tienen?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Tradicional de pollo, pescado, res y cerdo, además de una receta especial para gato. Escríbenos por WhatsApp para confirmar disponibilidad." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "¿Cómo se conserva?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Se maneja en congelador. Por WhatsApp te explicamos cómo almacenarlo y servirlo en casa." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "¿Cómo cambio el alimento de mi mascota?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Lo ideal es hacer el cambio de forma gradual y consultar a tu veterinario, sobre todo si tu mascota tiene alguna condición de salud. Te orientamos con las porciones por WhatsApp." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "¿Cómo hago mi pedido?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Escríbenos por WhatsApp o llena el formulario de esta página. Te confirmamos disponibilidad, precio y forma de entrega." }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+<!-- CONFIGURACIÓN: el número de WhatsApp se define en app.js (CONFIG.whatsappNumber). Todos los botones con data-wa toman ese número. -->
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ═══════════════ LOADER ═══════════════ -->
+<div id="loader" class="loader" role="status" aria-live="polite" aria-label="Cargando Mascotas a tu Meza">
+    <div class="loader-panel loader-panel--top"></div>
+    <div class="loader-panel loader-panel--bottom"></div>
+    <div class="loader-seam"></div>
+    <div class="loader-core">
+        <div class="loader-ring">
+            <svg class="loader-svg" viewBox="0 0 200 200" aria-hidden="true">
+                <defs>
+                    <linearGradient id="ld-grad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#ff4daa"/>
+                        <stop offset="1" stop-color="#8b5cf6"/>
+                    </linearGradient>
+                </defs>
+                <circle class="loader-ticks" cx="100" cy="100" r="96"/>
+                <circle class="loader-track" cx="100" cy="100" r="86"/>
+                <circle class="loader-bar" cx="100" cy="100" r="86" pathLength="100" transform="rotate(-90 100 100)"/>
+            </svg>
+            <img class="loader-logo" src="img/logo.webp" alt="Mascotas a tu Meza" width="150" height="144">
+            <span class="loader-orb loader-orb--a" aria-hidden="true"></span>
+            <span class="loader-orb loader-orb--b" aria-hidden="true"></span>
+            <span class="loader-orb loader-orb--c" aria-hidden="true"></span>
+        </div>
+        <p class="loader-status"><span class="loader-pct" data-loader-pct>0</span><span class="loader-pct-sign">%</span><span class="loader-msg" data-loader-msg>Seleccionando ingredientes</span></p>
+    </div>
+</div>
+
+<!-- Lienzo WebGL persistente (plato 3D): se ve en hero, manifiesto, armado del plato y cierre -->
+<canvas id="stage" class="stage" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ═══════════════ NAVEGACIÓN ═══════════════ -->
+<header class="nav" id="nav">
+    <div class="nav-bar">
+        <a class="nav-brand" href="#inicio" aria-label="Mascotas a tu Meza, ir al inicio">
+            <img src="img/logo.webp" alt="" width="64" height="61">
+            <span class="nav-brand-text">Mascotas a tu <b>Meza</b></span>
+        </a>
+        <nav class="nav-links" aria-label="Principal">
+            <a href="#proceso">Cómo lo hacemos</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#menu">Menú</a>
+            <a href="#como-pedir">Cómo pedir</a>
+            <a href="#preguntas">Preguntas</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar a tema claro" data-theme-toggle>
+                <i class="ph-bold ph-sun" aria-hidden="true"></i>
+            </button>
+            <a class="btn btn-primary btn-sm nav-cta" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero información sobre el alimento BARF para mi mascota.">
+                <span>Escríbenos</span>
+            </a>
+            <button class="icon-btn nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+                <i class="ph-bold ph-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <div class="nav-progress" aria-hidden="true"><span data-progress></span></div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu-links" aria-label="Menú móvil">
+        <a href="#proceso">Cómo lo hacemos</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#menu">Menú</a>
+        <a href="#como-pedir">Cómo pedir</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="mobile-menu-foot">
+        <a class="btn btn-primary btn-lg" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero información sobre el alimento BARF para mi mascota.">
+            <i class="ph-bold ph-whatsapp-logo" aria-hidden="true"></i><span>Escríbenos por WhatsApp</span>
+        </a>
+    </div>
+</div>
+
+<main id="main">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true">
+            <span class="blob blob--a"></span>
+            <span class="blob blob--b"></span>
+            <span class="blob blob--c"></span>
+            <i class="ph-fill ph-paw-print drift drift--1"></i>
+            <i class="ph-fill ph-paw-print drift drift--2"></i>
+            <i class="ph-fill ph-paw-print drift drift--3"></i>
+            <i class="ph-fill ph-paw-print drift drift--4"></i>
+            <i class="ph-fill ph-paw-print drift drift--5"></i>
+            <i class="ph-fill ph-paw-print drift drift--6"></i>
+        </div>
+
+        <div class="container hero-inner">
+            <div class="hero-copy">
+                <p class="eyebrow" data-hero-in>Alimento natural BARF para perros y gatos</p>
+                <h1 class="hero-title" id="hero-title">
+                    <span class="hero-line"><span class="hero-line-in">El sabor que aman.</span></span>
+                    <span class="hero-line"><span class="hero-line-in">La nutrición que <em class="shine">merecen.</em></span></span>
+                </h1>
+                <p class="hero-sub" data-hero-in>Alimentación natural BARF con proteína animal, vegetales y cereales. Para perros y gatos de todas las razas y edades.</p>
+                <div class="hero-actions" data-hero-in>
+                    <a class="btn btn-primary btn-lg magnetic" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero armar el menú de mi mascota con alimento BARF.">
+                        <span>Quiero el menú de mi mascota</span>
+                        <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-ghost btn-lg" href="#proceso"><span>Ver cómo se prepara</span></a>
+                </div>
+            </div>
+
+            <div class="hero-seal" aria-hidden="true" data-hero-in>
+                <svg viewBox="0 0 200 200" class="seal-ring">
+                    <defs><path id="seal-path" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+                    <text><textPath href="#seal-path" startOffset="0">ALIMENTO NATURAL · PERROS Y GATOS · ALIMENTO NATURAL · PERROS Y GATOS ·</textPath></text>
+                </svg>
+                <div class="seal-core">
+                    <span class="seal-stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></span>
+                    <strong>BARF</strong>
+                    <span>100%<br>natural</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ MARQUEE (único de la página) ═══════════════ -->
+    <section class="marquee" aria-label="Lo esencial de Mascotas a tu Meza">
+        <div class="marquee-track" aria-hidden="true">
+            <div class="marquee-group">
+                <span>100% natural</span><i class="ph-fill ph-paw-print"></i>
+                <span>BARF para perros y gatos</span><i class="ph-fill ph-paw-print"></i>
+                <span>Proteína animal</span><i class="ph-fill ph-paw-print"></i>
+                <span>Vegetales</span><i class="ph-fill ph-paw-print"></i>
+                <span>Cereales</span><i class="ph-fill ph-paw-print"></i>
+                <span>Todas las razas y edades</span><i class="ph-fill ph-paw-print"></i>
+            </div>
+            <div class="marquee-group">
+                <span>100% natural</span><i class="ph-fill ph-paw-print"></i>
+                <span>BARF para perros y gatos</span><i class="ph-fill ph-paw-print"></i>
+                <span>Proteína animal</span><i class="ph-fill ph-paw-print"></i>
+                <span>Vegetales</span><i class="ph-fill ph-paw-print"></i>
+                <span>Cereales</span><i class="ph-fill ph-paw-print"></i>
+                <span>Todas las razas y edades</span><i class="ph-fill ph-paw-print"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ MANIFIESTO (texto que se ilumina con el scroll) ═══════════════ -->
+    <section class="manifesto" id="manifiesto" aria-labelledby="manifiesto-title">
+        <div class="container manifesto-inner">
+            <h2 class="sr-only" id="manifiesto-title">Por qué existe Mascotas a tu Meza</h2>
+            <p class="manifesto-text" data-manifesto>
+                Para ti no es solo una mascota. Es
+                <span class="inline-img inline-img--dog" role="img" aria-label="Perro golden retriever feliz"></span>
+                quien te espera en la puerta y
+                <span class="inline-img inline-img--cat" role="img" aria-label="Gato atigrado de ojos grandes"></span>
+                quien se sienta a tu lado cuando llega la hora de comer. Por eso su plato merece ingredientes de verdad, preparados con el mismo cariño que tu mesa.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════ ARMADO DEL PLATO (escena 3D fijada) ═══════════════ -->
+    <section class="assembly" id="proceso" aria-labelledby="assembly-title">
+        <div class="container assembly-inner">
+            <div class="assembly-copy">
+                <h2 class="section-title" id="assembly-title" data-split>Así se arma su plato</h2>
+                <ol class="assembly-steps">
+                    <li class="a-step" data-step>
+                        <h3><i class="ph-bold ph-bowl-food" aria-hidden="true"></i> Proteína animal</h3>
+                        <p>Pollo, pescado, res o cerdo. Es la base de cada receta y el sabor que tu mascota reconoce al instante.</p>
+                    </li>
+                    <li class="a-step" data-step>
+                        <h3><i class="ph-bold ph-carrot" aria-hidden="true"></i> Vegetales</h3>
+                        <p>Vegetales de colores que suman fibra, textura y variedad a cada porción.</p>
+                    </li>
+                    <li class="a-step" data-step>
+                        <h3><i class="ph-bold ph-grains" aria-hidden="true"></i> Cereales</h3>
+                        <p>Una porción de cereales que completa el plato para acompañar su día a día.</p>
+                    </li>
+                    <li class="a-step" data-step>
+                        <h3><i class="ph-bold ph-heart" aria-hidden="true"></i> Directo a su plato</h3>
+                        <p>Tú solo sirves. Nosotros te orientamos por WhatsApp con sabores, porciones y conservación.</p>
+                        <a class="btn btn-primary" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, ya vi cómo se prepara y estoy listo para empezar con el alimento BARF.">
+                            <span>Estoy listo para empezar</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ol>
+                <ul class="assembly-rail" aria-hidden="true">
+                    <li>Proteína</li><li>Vegetales</li><li>Cereales</li><li>Listo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ BENEFICIOS (la imagen se abre a pantalla completa) ═══════════════ -->
+    <section class="plus" id="beneficios" aria-labelledby="plus-title">
+        <div class="plus-pin">
+            <div class="plus-intro" data-plus-intro>
+                <h2 class="section-title" id="plus-title">Se nota en su día a día</h2>
+            </div>
+            <div class="plus-frame" data-plus-frame>
+                <picture>
+                    <source media="(max-width: 767px)" srcset="img/dog-golden.webp">
+                    <img class="plus-img" data-plus-img src="img/dog-field.webp" alt="Perro golden retriever sonriendo en el pasto, sano y lleno de energía" width="1800" height="1800" loading="lazy" decoding="async">
+                </picture>
+                <div class="plus-shade"></div>
+            </div>
+            <ul class="plus-benefits" data-plus-benefits>
+                <li class="benefit">
+                    <i class="ph-bold ph-seal-check" aria-hidden="true"></i>
+                    <div><h3>Ingredientes de calidad</h3><p>Proteína animal, vegetales y cereales seleccionados para cada receta.</p></div>
+                </li>
+                <li class="benefit">
+                    <i class="ph-bold ph-lightning" aria-hidden="true"></i>
+                    <div><h3>Más energía y vitalidad</h3><p>Alimentación natural pensada para acompañar su ritmo de juego y paseo.</p></div>
+                </li>
+                <li class="benefit">
+                    <i class="ph-bold ph-sparkle" aria-hidden="true"></i>
+                    <div><h3>Pelo brillante y saludable</h3><p>Una nutrición pensada para que su pelaje luzca brillante y sano.</p></div>
+                </li>
+                <li class="benefit">
+                    <i class="ph-bold ph-shield-check" aria-hidden="true"></i>
+                    <div><h3>Fuerza y bienestar</h3><p>Alimento natural para acompañar su fuerza y su bienestar, a cualquier edad.</p></div>
+                </li>
+            </ul>
+            <div class="plus-cta" data-plus-cta>
+                <a class="btn btn-primary btn-lg" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero eso para mi peludo: más energía y un pelo brillante con alimento BARF.">
+                    <span>Quiero eso para mi peludo</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
+                </a>
+                <p class="fine">Los resultados pueden variar en cada mascota. Consulta a tu veterinario antes de cambiar su alimentación.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ PARA QUIÉN (bento) ═══════════════ -->
+    <section class="whom" id="para-quien" aria-labelledby="whom-title">
+        <div class="container">
+            <h2 class="section-title section-title--xl" id="whom-title" data-split>Para el que ladra.<br>Para el que ronronea.</h2>
+
+            <div class="bento">
+                <article class="bento-cell bento-dog" data-reveal>
+                    <img src="img/dog-eating.webp" alt="Perro comiendo de su plato en casa" width="1800" height="1200" loading="lazy" decoding="async">
+                    <div class="bento-caption">
+                        <h3>Perros de todas las razas y edades</h3>
+                        <p>Del cachorro travieso al senior tranquilo: hay un plato para cada etapa.</p>
+                    </div>
+                </article>
+                <article class="bento-cell bento-cat" data-reveal>
+                    <img src="img/cat-tabby.webp" alt="Gato atigrado de ojos verdes mirando a la cámara" width="1800" height="1800" loading="lazy" decoding="async">
+                    <div class="bento-caption">
+                        <h3>Y una receta especial para gatos</h3>
+                        <p>Porque los gatos también merecen comida natural.</p>
+                    </div>
+                </article>
+                <article class="bento-cell bento-stat bento-stat--violet" data-reveal>
+                    <i class="ph-fill ph-paw-print bento-watermark" aria-hidden="true"></i>
+                    <p class="stat-num"><span data-count="100">100</span><small>%</small></p>
+                    <p class="stat-label">natural en su alimentación</p>
+                </article>
+                <article class="bento-cell bento-stat bento-stat--pink" data-reveal>
+                    <i class="ph-fill ph-paw-print bento-watermark" aria-hidden="true"></i>
+                    <p class="stat-num"><span data-count="5">5</span></p>
+                    <p class="stat-label">sabores para elegir</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ MENÚ (desplazamiento horizontal) ═══════════════ -->
+    <section class="flavors" id="menu" aria-labelledby="menu-title">
+        <div class="flavors-pin">
+            <div class="flavors-track" data-track>
+                <header class="flavors-intro">
+                    <p class="eyebrow">Nuestro menú</p>
+                    <h2 class="section-title" id="menu-title">Cinco sabores para su mesa</h2>
+                    <p class="lead">Elige el favorito de tu peludo o pídenos que te recomendemos uno.</p>
+                </header>
+
+                <article class="flavor" data-flavor>
+                    <div class="flavor-media"><img src="img/pollo.webp" alt="Pechugas de pollo frescas, base de la receta tradicional de pollo" width="1800" height="1202" loading="lazy" decoding="async"></div>
+                    <div class="flavor-body">
+                        <span class="flavor-tag">Perros</span>
+                        <h3>Tradicional de pollo</h3>
+                        <p>Nuestra receta tradicional: pollo con vegetales y cereales. La base perfecta para empezar.</p>
+                        <a class="btn btn-primary btn-sm" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero pedir el alimento BARF tradicional de pollo para mi mascota."><span>Quiero el de pollo</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="flavor" data-flavor>
+                    <div class="flavor-media"><img src="img/pescado.webp" alt="Filete de salmón fresco, ingrediente de la receta de pescado" width="1350" height="1800" loading="lazy" decoding="async"></div>
+                    <div class="flavor-body">
+                        <span class="flavor-tag">Perros</span>
+                        <h3>Pescado</h3>
+                        <p>Proteína de pescado con vegetales y cereales, para variar el sabor sin dejar lo natural.</p>
+                        <a class="btn btn-primary btn-sm" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero pedir el alimento BARF de pescado para mi mascota."><span>Quiero el de pescado</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="flavor" data-flavor>
+                    <div class="flavor-media"><img src="img/res.webp" alt="Corte de res fresco con hueso para la receta de res" width="1800" height="1201" loading="lazy" decoding="async"></div>
+                    <div class="flavor-body">
+                        <span class="flavor-tag">Perros</span>
+                        <h3>Res</h3>
+                        <p>Proteína de res con vegetales y cereales. Un sabor intenso y clásico.</p>
+                        <a class="btn btn-primary btn-sm" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero pedir el alimento BARF de res para mi mascota."><span>Quiero el de res</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="flavor" data-flavor>
+                    <div class="flavor-media"><img src="img/cerdo.webp" alt="Cortes de cerdo frescos para la receta de cerdo" width="1800" height="1192" loading="lazy" decoding="async"></div>
+                    <div class="flavor-body">
+                        <span class="flavor-tag">Perros</span>
+                        <h3>Cerdo</h3>
+                        <p>Proteína de cerdo con vegetales y cereales, otra opción para rotar su menú.</p>
+                        <a class="btn btn-primary btn-sm" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero pedir el alimento BARF de cerdo para mi mascota."><span>Quiero el de cerdo</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="flavor flavor--cat" data-flavor>
+                    <div class="flavor-media"><img src="img/cat-look.webp" alt="Gato atigrado de ojos verdes, protagonista de la receta especial para gato" width="1200" height="1800" loading="lazy" decoding="async"></div>
+                    <div class="flavor-body">
+                        <span class="flavor-tag">Gatos</span>
+                        <h3>Especial para gato</h3>
+                        <p>Una receta pensada para gatos, con proteína animal, vegetales y cereales.</p>
+                        <a class="btn btn-primary btn-sm" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero pedir la receta especial para gato de alimento BARF."><span>Quiero el de mi gato</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <aside class="flavors-outro">
+                    <h3>¿No sabes cuál elegir?</h3>
+                    <p>Cuéntanos cómo es tu mascota y te recomendamos el sabor ideal.</p>
+                    <a class="btn btn-ghost btn-lg" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, no sé qué sabor elegir. ¿Me ayudan a escoger el ideal para mi mascota?"><span>Ayúdenme a elegir</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+                </aside>
+            </div>
+            <div class="flavors-progress" aria-hidden="true"><span data-track-progress></span></div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ CÓMO PEDIR (tarjetas apiladas) ═══════════════ -->
+    <section class="order" id="como-pedir" aria-labelledby="order-title">
+        <div class="container">
+            <h2 class="section-title section-title--xl" id="order-title" data-split>Pedir es así de sencillo</h2>
+            <ol class="stack">
+                <li class="stack-card" data-stack>
+                    <i class="ph-bold ph-chat-circle-text stack-icon" aria-hidden="true"></i>
+                    <div>
+                        <h3>Cuéntanos de tu mascota</h3>
+                        <p>Dinos si es perro o gato, su edad y el sabor que te llama la atención.</p>
+                    </div>
+                </li>
+                <li class="stack-card" data-stack>
+                    <i class="ph-bold ph-bowl-food stack-icon" aria-hidden="true"></i>
+                    <div>
+                        <h3>Elegimos juntos el menú</h3>
+                        <p>Te orientamos con sabores y porciones para que el cambio sea cómodo para los dos.</p>
+                    </div>
+                </li>
+                <li class="stack-card" data-stack>
+                    <i class="ph-bold ph-check-circle stack-icon" aria-hidden="true"></i>
+                    <div>
+                        <h3>Confirmamos tu pedido</h3>
+                        <p>Revisamos disponibilidad, precio y forma de entrega, todo por WhatsApp.</p>
+                    </div>
+                </li>
+                <li class="stack-card stack-card--final" data-stack>
+                    <i class="ph-bold ph-heart stack-icon" aria-hidden="true"></i>
+                    <div>
+                        <h3>Sírvelo y míralo disfrutar</h3>
+                        <p>Consérvalo en tu congelador y sirve cuando sea hora de comer.</p>
+                        <a class="btn btn-primary" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero hacer mi primer pedido de alimento BARF."><span>Hagamos mi primer pedido</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ═══════════════ PREGUNTAS FRECUENTES ═══════════════ -->
+    <section class="faq" id="preguntas" aria-labelledby="faq-title">
+        <div class="container faq-grid">
+            <div class="faq-side">
+                <h2 class="section-title" id="faq-title" data-split>Lo que más nos preguntan</h2>
+                <p class="lead">Si tu duda no está aquí, con gusto te la resolvemos.</p>
+                <a class="btn btn-ghost" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, tengo una duda sobre el alimento BARF para mi mascota."><span>Clic aquí y pregúntanos</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item" data-faq>
+                    <h3><button type="button" class="faq-q" aria-expanded="false"><span>¿Qué es la alimentación BARF?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></button></h3>
+                    <div class="faq-a"><div><p>BARF significa alimentos crudos biológicamente apropiados. Es una forma de alimentar a perros y gatos con ingredientes naturales: proteína animal, vegetales y cereales.</p></div></div>
+                </div>
+                <div class="faq-item" data-faq>
+                    <h3><button type="button" class="faq-q" aria-expanded="false"><span>¿Es para perros y para gatos?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></button></h3>
+                    <div class="faq-a"><div><p>Sí. Tenemos recetas para perros de todas las razas y edades, y una receta especial para gatos.</p></div></div>
+                </div>
+                <div class="faq-item" data-faq>
+                    <h3><button type="button" class="faq-q" aria-expanded="false"><span>¿Qué sabores tienen?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></button></h3>
+                    <div class="faq-a"><div><p>Tradicional de pollo, pescado, res y cerdo, además de una receta especial para gato. Escríbenos para confirmar disponibilidad.</p></div></div>
+                </div>
+                <div class="faq-item" data-faq>
+                    <h3><button type="button" class="faq-q" aria-expanded="false"><span>¿Cómo se conserva?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></button></h3>
+                    <div class="faq-a"><div><p>Se maneja en congelador. Por WhatsApp te explicamos cómo almacenarlo y servirlo en casa.</p></div></div>
+                </div>
+                <div class="faq-item" data-faq>
+                    <h3><button type="button" class="faq-q" aria-expanded="false"><span>¿Cómo cambio el alimento de mi mascota?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></button></h3>
+                    <div class="faq-a"><div><p>Lo ideal es hacer el cambio de forma gradual y consultar a tu veterinario, sobre todo si tu mascota tiene alguna condición de salud. Te orientamos con las porciones por WhatsApp.</p></div></div>
+                </div>
+                <div class="faq-item" data-faq>
+                    <h3><button type="button" class="faq-q" aria-expanded="false"><span>¿Cómo hago mi pedido?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></button></h3>
+                    <div class="faq-a"><div><p>Escríbenos por WhatsApp o llena el formulario de esta página. Te confirmamos disponibilidad, precio y forma de entrega.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ CONTACTO ═══════════════ -->
+    <section class="contact" id="contacto" aria-labelledby="contact-title">
+        <div class="contact-hero">
+            <div class="container contact-hero-inner">
+                <p class="eyebrow">Hablemos</p>
+                <h2 class="contact-title" id="contact-title" data-split>Su mejor plato empieza con un mensaje.</h2>
+                <p class="lead">Cuéntanos de tu perro o gato y te ayudamos a elegir el sabor ideal.</p>
+                <a class="btn btn-primary btn-xl magnetic" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero armar el menú de mi mascota con alimento BARF.">
+                    <i class="ph-bold ph-whatsapp-logo" aria-hidden="true"></i><span>Clic aquí y arma su menú</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="contact-body">
+            <div class="container contact-grid">
+                <div class="contact-photo" data-reveal>
+                    <img src="img/owner-dog.webp" alt="Dueño abrazando a su perro dorado sobre un fondo rosa" width="1800" height="1200" loading="lazy" decoding="async">
+                    <div class="contact-photo-note">
+                        <h3>Respondemos por WhatsApp</h3>
+                        <p>Escríbenos y recibe orientación personalizada para tu mascota.</p>
+                        <a class="contact-fb" href="https://www.facebook.com/share/1BAsz2CwoL/" target="_blank" rel="noopener"><i class="ph-bold ph-facebook-logo" aria-hidden="true"></i><span>Conócenos también en Facebook</span></a>
+                    </div>
+                </div>
+
+                <form class="form" id="pedido" novalidate data-form data-reveal>
+                    <h3 class="form-title">Cuéntanos de tu mascota</h3>
+
+                    <div class="field">
+                        <label for="f-nombre">Tu nombre</label>
+                        <input id="f-nombre" name="nombre" type="text" autocomplete="given-name" required aria-describedby="e-nombre">
+                        <p class="field-error" id="e-nombre" role="alert"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="f-mascota">Nombre de tu mascota <span class="opt">(opcional)</span></label>
+                        <input id="f-mascota" name="mascota" type="text" autocomplete="off">
+                    </div>
+
+                    <fieldset class="field">
+                        <legend>Es un</legend>
+                        <div class="chips" role="radiogroup" aria-describedby="e-tipo">
+                            <label class="chip"><input type="radio" name="tipo" value="perro" required><span><i class="ph-bold ph-dog" aria-hidden="true"></i> Perro</span></label>
+                            <label class="chip"><input type="radio" name="tipo" value="gato"><span><i class="ph-bold ph-cat" aria-hidden="true"></i> Gato</span></label>
+                        </div>
+                        <p class="field-error" id="e-tipo" role="alert"></p>
+                    </fieldset>
+
+                    <fieldset class="field">
+                        <legend>Sabores que te interesan <span class="opt">(opcional)</span></legend>
+                        <div class="chips">
+                            <label class="chip"><input type="checkbox" name="sabor" value="pollo"><span>Pollo</span></label>
+                            <label class="chip"><input type="checkbox" name="sabor" value="pescado"><span>Pescado</span></label>
+                            <label class="chip"><input type="checkbox" name="sabor" value="res"><span>Res</span></label>
+                            <label class="chip"><input type="checkbox" name="sabor" value="cerdo"><span>Cerdo</span></label>
+                            <label class="chip"><input type="checkbox" name="sabor" value="especial para gato"><span>Especial para gato</span></label>
+                        </div>
+                    </fieldset>
+
+                    <div class="field">
+                        <label for="f-etapa">Etapa de tu mascota</label>
+                        <select id="f-etapa" name="etapa">
+                            <option value="">Elige una opción</option>
+                            <option value="cachorro o gatito">Cachorro o gatito</option>
+                            <option value="adulto">Adulto</option>
+                            <option value="senior">Senior</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="f-mensaje">Mensaje <span class="opt">(opcional)</span></label>
+                        <textarea id="f-mensaje" name="mensaje" rows="3"></textarea>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg btn-block" type="submit"><i class="ph-bold ph-whatsapp-logo" aria-hidden="true"></i><span>Enviar mi pedido por WhatsApp</span></button>
+                    <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <img src="img/logo.webp" alt="Mascotas a tu Meza" width="150" height="144" loading="lazy" decoding="async">
+            <p>El sabor que ellos aman. La nutrición que merecen.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Pie de página">
+            <a href="#proceso">Cómo lo hacemos</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#menu">Menú</a>
+            <a href="#como-pedir">Cómo pedir</a>
+            <a href="#preguntas">Preguntas</a>
+        </nav>
+        <div class="footer-social">
+            <a class="btn btn-ghost btn-sm" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero información sobre el alimento BARF para mi mascota."><i class="ph-bold ph-whatsapp-logo" aria-hidden="true"></i><span>WhatsApp</span></a>
+            <a class="btn btn-ghost btn-sm" href="https://www.facebook.com/share/1BAsz2CwoL/" target="_blank" rel="noopener"><i class="ph-bold ph-facebook-logo" aria-hidden="true"></i><span>Facebook</span></a>
+        </div>
+    </div>
+    <p class="footer-wordmark" aria-hidden="true"><span>MASCOTAS</span> <span>A TU <b>MEZA</b></span></p>
+    <div class="container footer-legal">
+        <p>&copy; <span data-year>2026</span> Mascotas a tu Meza. Todos los derechos reservados.</p>
+        <p>Las imágenes son ilustrativas. Consulta a tu veterinario antes de cambiar la alimentación de tu mascota.</p>
+    </div>
+</footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a class="fab" href="https://wa.me/" target="_blank" rel="noopener" data-wa="Hola, quiero información sobre el alimento BARF para mi mascota." aria-label="Escríbenos por WhatsApp">
+    <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+    <span class="fab-label">¿Dudas? Escríbenos</span>
+</a>
+
+<!-- Librerías (CDN, versión fija). app.js funciona sin ellas con una versión degradada. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script defer src="app.js"></script>
+</body>
+</html>
